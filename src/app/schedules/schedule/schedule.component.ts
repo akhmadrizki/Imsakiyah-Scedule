@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/schedule.service';
 import { NgForm } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-schedule',
@@ -11,7 +12,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class ScheduleComponent implements OnInit {
 
   constructor(private service : ScheduleService,
-    private firestore:AngularFirestore) { }
+    private firestore:AngularFirestore,
+    private toastr : ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
@@ -30,14 +32,16 @@ export class ScheduleComponent implements OnInit {
       dzuhur: '',
       ashar: '',
       maghrib: '',
-      isya: ''
+      isya: '',
     }
   }
 
-  onSubmit(form:NgForm){
-    let data = form.value;
+  onSubmit(form: NgForm){
+    let data = Object.assign({}, form.value);
+    delete data.id;
     this.firestore.collection('schedules').add(data);
     this.resetForm(form);
+    this.toastr.success('Success Menambahkan', 'EMP. Register');
   }
 
 }

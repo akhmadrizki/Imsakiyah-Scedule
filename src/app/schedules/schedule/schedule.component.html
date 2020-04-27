@@ -20,6 +20,7 @@
 </form> -->
 
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
     <div class="form-group">
         <label>Hari</label>
         <input class="form-control" name="day" #day="ngModel" [(ngModel)]="service.formData.day">
