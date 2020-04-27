@@ -1,0 +1,28 @@
+<table class="table table-hover">
+    <thead>
+        <th>Hari</th>
+        <th>Tgl</th>
+        <th>Imsak</th>
+        <th>Subuh</th>
+        <th>Terbit</th>
+        <th>Dzuhur</th>
+        <th>Ashar</th>
+        <th>Maghrib</th>
+        <th>Isya</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let sch of list">
+            <td>{{ sch.day }}</td>
+            <td>{{ sch.date }}</td>
+            <td>{{ sch.imsak }}</td>
+            <td>{{ sch.subuh }}</td>
+            <td>{{ sch.terbit }}</td>
+            <td>{{ sch.dzuhur }}</td>
+            <td>{{ sch.ashar }}</td>
+            <td>{{ sch.maghrib }}</td>
+            <td>{{ sch.isya }}</td>
+            <td><a class="btn text-danger" (click)="onDelete(sch.id)"><i class="fa fa-trash"></i></a></td>
+        </tr>
+    </tbody>
+</table>
